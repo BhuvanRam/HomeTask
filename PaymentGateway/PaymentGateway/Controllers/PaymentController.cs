@@ -48,7 +48,7 @@ namespace PaymentGateway.Controllers
 
         [HttpPost]
         [Route("ProcessPayment")]
-        public async Task<IActionResult> ProcessPayment(PaymentRequest? paymentRequest)
+        public async Task<IActionResult> ProcessPayment(PaymentRequest paymentRequest)
         {
             if(!ModelState.IsValid)
                 throw new PaymentGatewayValidationException(

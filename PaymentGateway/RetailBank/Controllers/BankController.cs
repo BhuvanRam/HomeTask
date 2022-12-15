@@ -46,8 +46,6 @@ namespace RetailBank.Controllers
             Guid bankResponseId = Guid.NewGuid();
             PaymentTransaction transaction = new PaymentTransaction()
             {
-                CardNumber = bankRequest.CardNumber,
-                AmountDeducted = bankRequest.Amount,
                 CheckOutId = bankRequest.CheckoutId,
                 PaymentTransactionId = bankResponseId,
                 Status = status.ToString(),

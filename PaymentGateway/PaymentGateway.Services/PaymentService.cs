@@ -41,7 +41,7 @@ namespace PaymentGateway.Services
             return merchantStatus;
         }
 
-        public ShopperCheckout? GetPurchaseDetails(string bankResponseId)
+        public ShopperCheckout GetPurchaseDetails(string bankResponseId)
         {
             var paymentDetails = _paymentDbContext.ShopperCheckouts.FirstOrDefault(p => p.BankResponseId.Equals(bankResponseId));
             return paymentDetails;
@@ -89,7 +89,7 @@ namespace PaymentGateway.Services
                 BankResponseId = bankResponseId,
                 ExpiryDate = request.ExpiryDate,
                 Amount = Convert.ToDecimal(request.Amount),
-                CreditCardNumber = request.CardNumber,
+                CreditCardNumber = request.CardNumber.Masked('X', 5, request.CardNumber.Length - 5),
                 Currency = request.Currency,
                 PaymentStatus = status.ToString(),
                 TransactionMessages = messages
